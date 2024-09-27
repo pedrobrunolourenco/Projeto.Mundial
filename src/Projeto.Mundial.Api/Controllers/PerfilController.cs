@@ -21,7 +21,7 @@ namespace Projeto.Mundial.Api.Controllers
 
         [HttpGet]
         [Route("ObterPerfis")]
-        public async Task<IActionResult> ObterTodos()
+        public async Task<IActionResult> ObterPerfis()
         {
             try
             {
@@ -30,7 +30,7 @@ namespace Projeto.Mundial.Api.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError($"ObterPerfs {ex.Message}");
+                _logger.LogError($"ObterPerfis => {ex.Message}");
                 return BadRequest();
             }
         }
@@ -46,7 +46,7 @@ namespace Projeto.Mundial.Api.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError($"IncluirPerfil {ex.Message}");
+                _logger.LogError($"IncluirPerfil => {ex.Message}");
                 return BadRequest();
             }
         }
