@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2. IOC", "4.2. IOC", "{3C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projento.Mundial.Domain", "src\Projento.Mundial.Domain\Projento.Mundial.Domain.csproj", "{B44444D1-D105-4076-A41A-885BB7D207A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projeto.Mundial.Data", "src\Projeto.Mundial.Data\Projeto.Mundial.Data.csproj", "{490F1D79-84F8-47DE-838B-E7903AC2F523}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{B44444D1-D105-4076-A41A-885BB7D207A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B44444D1-D105-4076-A41A-885BB7D207A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B44444D1-D105-4076-A41A-885BB7D207A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{490F1D79-84F8-47DE-838B-E7903AC2F523}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{490F1D79-84F8-47DE-838B-E7903AC2F523}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{490F1D79-84F8-47DE-838B-E7903AC2F523}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{490F1D79-84F8-47DE-838B-E7903AC2F523}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -35,6 +41,7 @@ Global
 		{997B66CE-1D2A-42B0-9EBD-D54FDB58D52C} = {D2B1D597-21C7-4A16-BF3B-A8274D7AE8E8}
 		{3CF8D6FC-DBE0-42F7-ACDF-F0DC70CC19D8} = {D2B1D597-21C7-4A16-BF3B-A8274D7AE8E8}
 		{B44444D1-D105-4076-A41A-885BB7D207A0} = {1BFDA4D8-DBA9-4B61-8F2D-7A24FE4D63DC}
+		{490F1D79-84F8-47DE-838B-E7903AC2F523} = {997B66CE-1D2A-42B0-9EBD-D54FDB58D52C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DDEA96C9-29B9-435E-8959-B6EC795637B7}
