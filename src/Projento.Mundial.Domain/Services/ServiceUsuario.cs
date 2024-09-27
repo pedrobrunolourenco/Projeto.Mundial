@@ -38,6 +38,7 @@ namespace Projento.Mundial.Domain.Services
             if (await VerificarSeIdJaExiste(usuario.Id)) usuario.ListaErros.Add($"O ID {usuario.Id} já existe.");
             if (!await VerificarSeOPerfilExiste(usuario.IdPerfil)) usuario.ListaErros.Add($"O ID {usuario.Id} não existe.");
             if (await VerificarSeNomeJaExiste(usuario.Nome)) usuario.ListaErros.Add($"O usuário {usuario.Nome} já existe.");
+            if (await VerificarSeEmailJaExiste(usuario.Email)) usuario.ListaErros.Add($"O Email {usuario.Email} já existe.");
             return usuario;
         }
 

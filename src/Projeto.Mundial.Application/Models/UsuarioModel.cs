@@ -26,7 +26,7 @@ namespace Projeto.Mundial.Application.Models
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Necessário informar Senha")]
-        public string Senha { get; private set; }
+        public string Senha { get; set; }
 
         [IgnoreDataMember]
         [JsonIgnore]
