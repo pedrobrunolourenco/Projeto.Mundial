@@ -1,6 +1,7 @@
 ﻿using Projento.Mundial.Domain.Interfaces.Repository;
 using Projento.Mundial.Domain.Interfaces.Service;
 using Projeto.Mundial.Domain.Entities;
+using Projeto.Mundial.Domain.Extensions;
 
 namespace Projento.Mundial.Domain.Services
 {
@@ -27,6 +28,7 @@ namespace Projento.Mundial.Domain.Services
             if (!usuario.Validar()) return usuario;
             var errosDominio = await ValidarRegrasDeDominio(usuario);
             if (errosDominio.ListaErros.Any()) return usuario;
+            usuario.AtribuirSenha(usuario.Senha);
             await _repositoryUsuario.Adicionar(usuario);
             await _repositoryUsuario.Salvar();
             return usuario;
@@ -36,7 +38,7 @@ namespace Projento.Mundial.Domain.Services
         private async Task<Usuario> ValidarRegrasDeDominio(Usuario usuario)
         {
             if (await VerificarSeIdJaExiste(usuario.Id)) usuario.ListaErros.Add($"O ID {usuario.Id} já existe.");
-            if (!await VerificarSeOPerfilExiste(usuario.IdPerfil)) usuario.ListaErros.Add($"O ID {usuario.Id} não existe.");
+            if (!await VerificarSeOPerfilExiste(usuario.IdPerfil)) usuario.ListaErros.Add($"O Perfil {usuario.IdPerfil} não existe.");
             if (await VerificarSeNomeJaExiste(usuario.Nome)) usuario.ListaErros.Add($"O usuário {usuario.Nome} já existe.");
             if (await VerificarSeEmailJaExiste(usuario.Email)) usuario.ListaErros.Add($"O Email {usuario.Email} já existe.");
             return usuario;
