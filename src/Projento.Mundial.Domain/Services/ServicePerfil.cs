@@ -39,14 +39,13 @@ namespace Projento.Mundial.Domain.Services
         private async Task<bool> VerificarSeIdJaExiste(int id)
         {
             var result = await _repositoryPerfil.BuscarId(id);
-            return result == null ? true : false;
+            return result == null ? false : true;
         }
 
         private async Task<bool> VerificarSeNomeJaExiste(string nome)
         {
             var result = await _repositoryPerfil.Listar();
-            var retorno = result.Where(p => p.Nome == nome).Any();
-            return retorno;
+            return result.Where(p => p.Nome.ToUpper() == nome.ToUpper()).Any();
         }
 
 
