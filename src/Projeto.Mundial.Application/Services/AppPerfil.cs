@@ -25,7 +25,6 @@ namespace Projeto.Mundial.Application.Services
 
         public async Task<PerfilModel> IncluirPerfil(PerfilModel perfil)
         {
-            // var _perfil = _mapper.Map<Perfil>(perfil);
             return _mapper.Map<PerfilModel>(await _servicePerfil.IncluirPerfil(_mapper.Map<Perfil>(perfil)));
         }
 

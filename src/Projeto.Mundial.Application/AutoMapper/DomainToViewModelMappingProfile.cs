@@ -14,6 +14,8 @@ namespace Projeto.Mundial.Application.AutoMapper
         public DomainToViewModelMappingProfile()
         {
             CreateMap<Perfil, PerfilModel>();
+            CreateMap<Usuario, UsuarioModel>();
+
         }
     }
 }

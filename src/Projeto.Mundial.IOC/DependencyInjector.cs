@@ -18,11 +18,12 @@ namespace Projeto.Mundial.IOC
             services.AddScoped<IServicePerfil, ServicePerfil>();
             services.AddScoped<IRepositoryPerfil, RepositoryPerfil>();
 
+            // Usuario
+            services.AddScoped<IAppUsuario, AppUsuario>();
+            services.AddScoped<IServiceUsuario, ServiceUsuario>();
+            services.AddScoped<IRepositoryUsuario, RepositoryUsuario>();
 
-            //services.AddScoped<IServicePessoa, ServicePessoa>();
-            //services.AddScoped<IAppPessoa, AppPessoa>();
-            //// telefone
-            //services.AddScoped<IRepositoryTelefone, RepositoryTelefone>();
+            // outros
             services.AddScoped<DataContext>();
         }
     }

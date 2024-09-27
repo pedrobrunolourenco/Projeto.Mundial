@@ -11,6 +11,9 @@ namespace Projeto.Mundial.Application.AutoMapper
             CreateMap<PerfilModel, Perfil>()
                     .ConstructUsing(p => new Perfil(p.IdPerfil, p.Nome));
 
+            CreateMap<UsuarioModel, Usuario>()
+                    .ConstructUsing(u => new Usuario(u.Id, u.IdPerfil, u.Nome, u.Email, u.Senha));
+
         }
     }
 }
