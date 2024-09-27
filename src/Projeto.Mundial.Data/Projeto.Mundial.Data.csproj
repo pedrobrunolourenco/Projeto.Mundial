@@ -22,10 +22,6 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Projento.Mundial.Domain\Projento.Mundial.Domain.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Repositories\" />
 	</ItemGroup>	
 
 </Project>
