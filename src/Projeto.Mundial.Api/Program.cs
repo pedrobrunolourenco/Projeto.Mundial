@@ -1,4 +1,6 @@
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Projeto.Mundial.Application.AutoMapper;
 using Projeto.Mundial.Data;
 using Projeto.Mundial.IOC;
 
@@ -11,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<DataContext>(options =>
     options.UseInMemoryDatabase("DbMundial"));
 
+builder.Services.AddAutoMapper(typeof(DomainToViewModelMappingProfile), typeof(ViewModelToDomainMappingProfile));
 builder.Services.RegisterServices();
 
 builder.Services.AddControllers();

@@ -12,6 +12,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Projeto.Mundial.Application\Projeto.Mundial.Application.csproj" />
+	  <ProjectReference Include="..\Projeto.Mundial.Data\Projeto.Mundial.Data.csproj" />
 	</ItemGroup>
 
 

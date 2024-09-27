@@ -14,11 +14,6 @@
 		<PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="7.0.12" />
 	</ItemGroup>
 
-
-	<ItemGroup>
-		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-	</ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\Projeto.Mundial.Application\Projeto.Mundial.Application.csproj" />
     <ProjectReference Include="..\Projeto.Mundial.Data\Projeto.Mundial.Data.csproj" />

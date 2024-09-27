@@ -19,6 +19,22 @@ namespace Projeto.Mundial.Api.Controllers
             _logger = logger;
         }
 
+        [HttpGet]
+        [Route("ObterPerfis")]
+        public async Task<IActionResult> ObterTodos()
+        {
+            try
+            {
+                var result = await _appPerfil.ObterPerfis();
+                return RetornoRequest(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"ObterPerfs {ex.Message}");
+                return BadRequest();
+            }
+        }
+
         [HttpPost]
         [Route("IncluirPerfil")]
         public async Task<IActionResult> IncluirPerfil([FromBody] PerfilModel model)
