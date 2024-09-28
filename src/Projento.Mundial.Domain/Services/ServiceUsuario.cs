@@ -1,6 +1,8 @@
-﻿using Projento.Mundial.Domain.Interfaces.Repository;
+﻿using Projento.Mundial.Domain.DTO;
+using Projento.Mundial.Domain.Interfaces.Repository;
 using Projento.Mundial.Domain.Interfaces.Service;
 using Projeto.Mundial.Domain.Entities;
+using System;
 
 namespace Projento.Mundial.Domain.Services
 {
@@ -9,7 +11,7 @@ namespace Projento.Mundial.Domain.Services
 
         private readonly IRepositoryUsuario _repositoryUsuario;
         private readonly IRepositoryPerfil _repositoryPerfil;
-
+        
         public ServiceUsuario(IRepositoryUsuario repositoryUsuario,
                               IRepositoryPerfil repositoryPerfil)
         {
@@ -17,10 +19,12 @@ namespace Projento.Mundial.Domain.Services
             _repositoryPerfil = repositoryPerfil;
         }
 
-        public async Task<IEnumerable<Usuario>> ObterUsuarios()
+
+        public async Task<List<UsuarioPerfilDto>> ObterUsuariosComPerfisAsync()
         {
-            return await _repositoryUsuario.Listar();
+            return await _repositoryUsuario.ObterUsuariosComPerfisAsync();
         }
+
 
         public async Task<Usuario> IncluirUsuario(Usuario usuario)
         {
@@ -67,7 +71,6 @@ namespace Projento.Mundial.Domain.Services
             var result = await _repositoryUsuario.Listar();
             return result.Where(p => p.Email.ToUpper() == email.ToUpper()).Any();
         }
-
 
     }
 }

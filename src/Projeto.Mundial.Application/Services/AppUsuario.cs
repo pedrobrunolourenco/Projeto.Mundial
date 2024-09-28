@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Projento.Mundial.Domain.DTO;
 using Projento.Mundial.Domain.Interfaces.Service;
 using Projeto.Mundial.Application.Interfaces;
 using Projeto.Mundial.Application.Models;
@@ -20,9 +21,9 @@ namespace Projeto.Mundial.Application.Services
         }
 
 
-        public async Task<IEnumerable<UsuarioModel>> ObterUsuarios()
+        public async Task<IEnumerable<UsuarioPerfilDto>> ObterUsuarios()
         {
-            return _mapper.Map<IEnumerable<UsuarioModel>>(await _serviceUsuario.ObterUsuarios());
+            return _mapper.Map<IEnumerable<UsuarioPerfilDto>>(await _serviceUsuario.ObterUsuariosComPerfisAsync());
         }
 
         public async Task<UsuarioResult> IncluirUsuario(UsuarioModel usuario)
