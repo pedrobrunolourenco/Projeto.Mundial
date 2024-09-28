@@ -37,7 +37,7 @@ namespace Projeto.Mundial.Api.Controllers
                 var user_ = AutenticacaoUsuario(login);
                 if (user_.Usuario == "Mundial")
                 {
-                    var token = GerarToken(login);
+                    var token = GerarToken();
                     var response = new { Token = token };
                     return RetornoRequest(response);
                 }
@@ -46,7 +46,7 @@ namespace Projeto.Mundial.Api.Controllers
                     var result = await _appUsuario.ObterUsuario(login.Usuario, login.Senha);
                     if(result != null)
                     {
-                        var token = GerarToken(login);
+                        var token = GerarToken();
                         var response = new { Token = token };
                         return RetornoRequest(response);
                     }
@@ -105,7 +105,7 @@ namespace Projeto.Mundial.Api.Controllers
             return _user;
         }
 
-        private string GerarToken(User users)
+        private string GerarToken()
         {
             var chave = "App-Teste-Pedro-Bruno";
             var chaveSegura = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(chave));
