@@ -27,10 +27,4 @@ export class PerfilListComponent implements OnInit {
      });
   }
 
-  // Método chamado ao clicar no botão "Novo"
-  novoPerfil() {
-    console.log('Novo perfil clicado');
-    // Aqui você pode adicionar a lógica para criar um novo perfil, como navegar para uma página de criação
-  }
-
 }
