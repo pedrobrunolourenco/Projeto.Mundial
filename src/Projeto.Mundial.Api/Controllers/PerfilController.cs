@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Projeto.Mundial.Application.Interfaces;
 using Projeto.Mundial.Application.Models;
 
@@ -6,6 +7,7 @@ namespace Projeto.Mundial.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class PerfilController : BasicController
     {
 

@@ -12,6 +12,7 @@ namespace Projeto.Mundial.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class UsuarioController : BasicController
     {
 
