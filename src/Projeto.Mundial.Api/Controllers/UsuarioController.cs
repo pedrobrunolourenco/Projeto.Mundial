@@ -30,7 +30,7 @@ namespace Projeto.Mundial.Api.Controllers
         [HttpPost]
         [Route("Autenticar")]
         [AllowAnonymous]
-        public IActionResult Logar(User login)
+        public async Task<IActionResult> Logar(User login)
         {
             try
             {
@@ -40,6 +40,16 @@ namespace Projeto.Mundial.Api.Controllers
                     var token = GerarToken(login);
                     var response = new { Token = token };
                     return RetornoRequest(response);
+                }
+                else
+                {
+                    var result = await _appUsuario.ObterUsuario(login.Usuario, login.Senha);
+                    if(result != null)
+                    {
+                        var token = GerarToken(login);
+                        var response = new { Token = token };
+                        return RetornoRequest(response);
+                    }
                 }
                 var erro = new List<string> { "Usuáro não encontrado." };
                 return RetornoRequest(user_.Usuario, erro);

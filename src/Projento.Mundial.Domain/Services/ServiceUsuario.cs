@@ -2,6 +2,7 @@
 using Projento.Mundial.Domain.Interfaces.Repository;
 using Projento.Mundial.Domain.Interfaces.Service;
 using Projeto.Mundial.Domain.Entities;
+using Projeto.Mundial.Domain.Extensions;
 using System;
 
 namespace Projento.Mundial.Domain.Services
@@ -18,6 +19,13 @@ namespace Projento.Mundial.Domain.Services
             _repositoryUsuario = repositoryUsuario;
             _repositoryPerfil = repositoryPerfil;
         }
+
+        public async Task<Usuario?> ObterUsuario(string nome, string senha)
+        {
+            var result = await _repositoryUsuario.Listar();
+            return result?.FirstOrDefault(x => x.Nome == nome && x.Senha == senha.Criptografar());
+        }
+
 
 
         public async Task<List<UsuarioPerfilDto>> ObterUsuariosComPerfisAsync()

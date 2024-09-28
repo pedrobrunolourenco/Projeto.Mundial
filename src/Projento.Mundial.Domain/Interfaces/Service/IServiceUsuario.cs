@@ -7,6 +7,7 @@ namespace Projento.Mundial.Domain.Interfaces.Service
     {
         Task<Usuario> IncluirUsuario(Usuario usuario);
         Task<List<UsuarioPerfilDto>> ObterUsuariosComPerfisAsync();
+        Task<Usuario?> ObterUsuario(string nome, string senha);
 
 
     }
