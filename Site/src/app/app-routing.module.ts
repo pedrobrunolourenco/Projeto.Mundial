@@ -2,12 +2,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './Pages/login/login.component';
+import { AuthGuard } from './auth.guard';
+import { PerfilListComponent } from './Pages/perfil-list/perfil-list.component';
+import { PerfilFormComponent } from './Pages/perfil-form/perfil-form.component';
 
 
 const routes: Routes = [
   {path: '', component: LoginComponent },
-  {path: 'home', component: HomeComponent },
-
+  {path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  {path: 'perfil/list', component: PerfilListComponent, canActivate: [AuthGuard] },
+  {path: 'perfil/novo', component: PerfilFormComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

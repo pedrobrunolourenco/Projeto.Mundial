@@ -14,6 +14,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoadInterceptor } from './_interceptors/loading.interceptor';
 import { BaseUiComponent } from './_components/base-ui/base-ui.component';
 import { LoginComponent } from './Pages/login/login.component';
+import { PerfilListComponent } from './Pages/perfil-list/perfil-list.component';
+import { PerfilFormComponent } from './Pages/perfil-form/perfil-form.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { LoginComponent } from './Pages/login/login.component';
     FooterComponent,
     NavbarComponent,
     BaseUiComponent,
-    LoginComponent
+    LoginComponent,
+    PerfilListComponent,
+    PerfilFormComponent
   ],
   imports: [
     BrowserModule,

@@ -99,7 +99,7 @@ namespace Projeto.Mundial.Api.Controllers
         private User AutenticacaoUsuario(User user)
         {
             var _user = new User();
-            if (user.Usuario == "Adm" && user.Senha == "12345")
+            if (user.Usuario.ToUpper() == "MUNDIAL" && user.Senha.ToUpper() == "MUNDIAL")
             {
                 _user.Usuario = "Mundial";
             }

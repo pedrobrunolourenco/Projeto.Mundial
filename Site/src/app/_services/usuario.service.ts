@@ -10,15 +10,13 @@ import { UserAuth } from '../_models/UserAuth';
 })
 export class UsuarioService {
 
-
-
   baseUrl: string = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
   getToken(usuario: string, senha: string){
 
-    localStorage.removeItem('user');
+    localStorage.removeItem('token-mundial');
 
     const user: UserAuth = {
       usuario: usuario,
@@ -27,10 +25,12 @@ export class UsuarioService {
 
     return this.http.post<ResultAuth>(this.baseUrl + 'Usuario/Autenticar',user).pipe(
       map( (response: ResultAuth) => {
-        if(response) localStorage.setItem('user', JSON.stringify(user))
+        if(response && response.sucesso) localStorage.setItem('token-mundial', JSON.stringify(response.data))
         return response;
       })
     );
   }
+
+  // const dado = localStorage.getItem('meuDado');
 
 }

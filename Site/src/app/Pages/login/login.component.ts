@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { UsuarioService } from '../../_services/usuario.service';
 import { ResultAuth } from '../../_models/ResultAuth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,14 +13,15 @@ export class LoginComponent implements OnInit {
 
 
    constructor(private toastr: ToastrService,
-               private usuarioService: UsuarioService
+               private usuarioService: UsuarioService,
+               private router: Router
    ) { }
 
   login: string = '';
   senha: string = '';
 
   ngOnInit(): void {
-     localStorage.removeItem("user");
+     localStorage.removeItem("token-mundial");
   }
 
   onSubmit() {
@@ -35,6 +37,7 @@ export class LoginComponent implements OnInit {
       this.usuarioService.getToken(login,senha).subscribe((response: ResultAuth) => {
         if(response.sucesso == true){
           this.toastr.success("Usuário autenticado com sucesso!" );
+          this.router.navigate(['home']);
         }
         if(response.sucesso == false){
           this.toastr.error(response.mensagens[0]);

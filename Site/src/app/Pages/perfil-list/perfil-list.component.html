@@ -1,0 +1,22 @@
+<div class="container mt-4">
+  <h4 class="mb-3">Perfis de Usuários</h4>
+
+  <div class="d-flex justify-content-end mb-3">
+    <button class="btn btn-primary" routerLink="/perfil/novo">Novo Perfil</button>
+  </div>
+
+  <table class="table table-bordered table-hover">
+    <thead class="table-light">
+      <tr>
+        <th>ID do Perfil</th>
+        <th>Nome do Perfil</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let perfil of perfis">
+        <td>{{ perfil.idPerfil }}</td>
+        <td>{{ perfil.nome }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
