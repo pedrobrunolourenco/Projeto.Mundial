@@ -11,7 +11,7 @@ namespace Projeto.Mundial.Application.Interfaces
     public interface IAppUsuario
     {
         Task<IEnumerable<UsuarioModel>> ObterUsuarios();
-        Task<UsuarioModel> IncluirUsuario(UsuarioModel usuario);
+        Task<UsuarioResult> IncluirUsuario(UsuarioModel usuario);
 
     }
 }

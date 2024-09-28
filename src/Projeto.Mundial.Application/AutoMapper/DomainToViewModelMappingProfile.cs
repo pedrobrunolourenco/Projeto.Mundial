@@ -15,6 +15,7 @@ namespace Projeto.Mundial.Application.AutoMapper
         {
             CreateMap<Perfil, PerfilModel>();
             CreateMap<Usuario, UsuarioModel>();
+            CreateMap<Usuario, UsuarioResult>();
 
         }
     }

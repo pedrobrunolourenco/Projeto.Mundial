@@ -1,7 +1,6 @@
 ﻿using Projento.Mundial.Domain.Interfaces.Repository;
 using Projento.Mundial.Domain.Interfaces.Service;
 using Projeto.Mundial.Domain.Entities;
-using Projeto.Mundial.Domain.Extensions;
 
 namespace Projento.Mundial.Domain.Services
 {

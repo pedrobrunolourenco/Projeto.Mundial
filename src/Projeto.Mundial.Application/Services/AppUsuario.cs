@@ -25,9 +25,9 @@ namespace Projeto.Mundial.Application.Services
             return _mapper.Map<IEnumerable<UsuarioModel>>(await _serviceUsuario.ObterUsuarios());
         }
 
-        public async Task<UsuarioModel> IncluirUsuario(UsuarioModel usuario)
+        public async Task<UsuarioResult> IncluirUsuario(UsuarioModel usuario)
         {
-            return _mapper.Map<UsuarioModel>(await _serviceUsuario.IncluirUsuario(_mapper.Map<Usuario>(usuario)));
+            return _mapper.Map<UsuarioResult>(await _serviceUsuario.IncluirUsuario(_mapper.Map<Usuario>(usuario)));
         }
 
      
