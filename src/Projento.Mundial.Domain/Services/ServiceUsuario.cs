@@ -20,10 +20,10 @@ namespace Projento.Mundial.Domain.Services
             _repositoryPerfil = repositoryPerfil;
         }
 
-        public async Task<Usuario?> ObterUsuario(string nome, string senha)
+        public async Task<Usuario> ObterUsuario(string nome, string senha)
         {
             var result = await _repositoryUsuario.Listar();
-            return result?.FirstOrDefault(x => x.Nome == nome && x.Senha == senha.Criptografar());
+            return result.FirstOrDefault(x => x.Nome == nome && x.Senha == senha.Criptografar());
         }
 
 
