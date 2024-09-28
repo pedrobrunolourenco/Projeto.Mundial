@@ -8,7 +8,6 @@ using Projeto.Mundial.Data;
 using Projeto.Mundial.IOC;
 using System.Text;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSwaggerGen(options =>
@@ -27,22 +26,20 @@ builder.Services.AddSwaggerGen(options =>
     });
 
     options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
             {
+                Reference = new OpenApiReference
                 {
-                    new OpenApiSecurityScheme
-                    {
-                        Reference = new OpenApiReference
-                        {
-                            Type = ReferenceType.SecurityScheme,
-                            Id = "Bearer"
-                        }
-                    },
-                    Array.Empty<string>()
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
                 }
-            });
+            },
+            Array.Empty<string>()
+        }
+    });
 });
-
-
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options => {
@@ -65,6 +62,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Adicionar a configuração de CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin",
+        builder => builder.WithOrigins("http://localhost:4200")
+                          .AllowAnyMethod()
+                          .AllowAnyHeader());
+});
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -73,6 +79,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("AllowSpecificOrigin"); // Aplicar a política de CORS
 
 app.UseAuthentication();
 app.UseAuthorization();

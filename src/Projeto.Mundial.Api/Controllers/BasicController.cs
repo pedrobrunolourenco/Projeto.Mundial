@@ -26,7 +26,7 @@ namespace Projeto.Mundial.Api.Controllers
         {
             if (erros.Any())
             {
-                return BadRequest(new
+                return Ok(new
                 {
                     Sucesso = false,
                     Data = result,

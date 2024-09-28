@@ -1,0 +1,17 @@
+<div class="container d-flex align-items-center justify-content-center">
+  <div class="card shadow-sm p-4" style="max-width: 400px; width: 100%; margin-top: 250px;">
+    <h4 class="card-title text-center mb-4">Login</h4>
+    <form (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="loginInput" class="form-label">Login</label>
+        <input type="text" id="loginInput" [(ngModel)]="login" name="login" class="form-control" placeholder="Digite seu login" required>
+      </div>
+      <div class="mb-3">
+        <label for="passwordInput" class="form-label">Senha</label>
+        <input type="password" id="passwordInput" [(ngModel)]="senha" name="senha" class="form-control" placeholder="Digite sua senha" required>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Entrar</button>
+    </form>
+  </div>
+</div>
+
