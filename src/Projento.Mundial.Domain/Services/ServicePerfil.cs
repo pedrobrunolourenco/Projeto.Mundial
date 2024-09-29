@@ -7,16 +7,16 @@ namespace Projento.Mundial.Domain.Services
     public class ServicePerfil : IServicePerfil
     {
 
-        private readonly IRepositoryPerfil _repositoryPerfil;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public ServicePerfil(IRepositoryPerfil repositoryPerfil)
+        public ServicePerfil(IUnitOfWork unitOfWork)
         {
-            _repositoryPerfil = repositoryPerfil;      
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<IEnumerable<Perfil>> ObterPerfis()
         {
-            return await _repositoryPerfil.Listar();
+            return await _unitOfWork.RepositoryPerfil.Listar();
         }
 
         public async Task<Perfil> IncluirPerfil(Perfil perfil)
@@ -24,8 +24,8 @@ namespace Projento.Mundial.Domain.Services
             if (!perfil.Validar()) return perfil;
             var errosDominio = await ValidarRegrasDeDominio(perfil);
             if (errosDominio.ListaErros.Any()) return perfil;
-            await _repositoryPerfil.Adicionar(perfil);
-            await _repositoryPerfil.Salvar();
+            await _unitOfWork.RepositoryPerfil.Adicionar(perfil);
+            await _unitOfWork.Commit();
             return perfil;
         }
 
@@ -38,13 +38,13 @@ namespace Projento.Mundial.Domain.Services
 
         private async Task<bool> VerificarSeIdJaExiste(int id)
         {
-            var result = await _repositoryPerfil.BuscarId(id);
+            var result = await _unitOfWork.RepositoryPerfil.BuscarId(id);
             return result == null ? false : true;
         }
 
         private async Task<bool> VerificarSeNomeJaExiste(string nome)
         {
-            var result = await _repositoryPerfil.Listar();
+            var result = await _unitOfWork.RepositoryPerfil.Listar();
             return result.Where(p => p.Nome.ToUpper() == nome.ToUpper()).Any();
         }
 

@@ -3,26 +3,23 @@ using Projento.Mundial.Domain.Interfaces.Repository;
 using Projento.Mundial.Domain.Interfaces.Service;
 using Projeto.Mundial.Domain.Entities;
 using Projeto.Mundial.Domain.Extensions;
-using System;
 
 namespace Projento.Mundial.Domain.Services
 {
     public class ServiceUsuario : IServiceUsuario
     {
 
-        private readonly IRepositoryUsuario _repositoryUsuario;
-        private readonly IRepositoryPerfil _repositoryPerfil;
-        
-        public ServiceUsuario(IRepositoryUsuario repositoryUsuario,
-                              IRepositoryPerfil repositoryPerfil)
+        private readonly IUnitOfWork _unitOfWork;
+
+        public ServiceUsuario(IUnitOfWork unitOfWork)
         {
-            _repositoryUsuario = repositoryUsuario;
-            _repositoryPerfil = repositoryPerfil;
+            _unitOfWork = unitOfWork;
         }
+
 
         public async Task<Usuario> ObterUsuario(string nome, string senha)
         {
-            var result = await _repositoryUsuario.Listar();
+            var result = await _unitOfWork.RepositoryUsuario.Listar();
             return result.FirstOrDefault(x => x.Nome == nome && x.Senha == senha.Criptografar());
         }
 
@@ -30,7 +27,7 @@ namespace Projento.Mundial.Domain.Services
 
         public async Task<List<UsuarioPerfilDto>> ObterUsuariosComPerfisAsync()
         {
-            return await _repositoryUsuario.ObterUsuariosComPerfisAsync();
+            return await _unitOfWork.RepositoryUsuario.ObterUsuariosComPerfisAsync();
         }
 
 
@@ -40,8 +37,8 @@ namespace Projento.Mundial.Domain.Services
             var errosDominio = await ValidarRegrasDeDominio(usuario);
             if (errosDominio.ListaErros.Any()) return usuario;
             usuario.AtribuirSenha(usuario.Senha);
-            await _repositoryUsuario.Adicionar(usuario);
-            await _repositoryUsuario.Salvar();
+            await _unitOfWork.RepositoryUsuario.Adicionar(usuario);
+            await _unitOfWork.Commit();
             return usuario;
 
         }
@@ -57,26 +54,26 @@ namespace Projento.Mundial.Domain.Services
 
         private async Task<bool> VerificarSeOPerfilExiste(int idPerfil)
         {
-            var result = await _repositoryPerfil.BuscarId(idPerfil);
+            var result = await _unitOfWork.RepositoryPerfil.BuscarId(idPerfil);
             return result == null ? false : true;
         }
 
 
         private async Task<bool> VerificarSeIdJaExiste(int id)
         {
-            var result = await _repositoryUsuario.BuscarId(id);
+            var result = await _unitOfWork.RepositoryUsuario.BuscarId(id);
             return result == null ? false : true;
         }
 
         private async Task<bool> VerificarSeNomeJaExiste(string nome)
         {
-            var result = await _repositoryUsuario.Listar();
+            var result = await _unitOfWork.RepositoryUsuario.Listar();
             return result.Where(p => p.Nome.ToUpper() == nome.ToUpper()).Any();
         }
 
         private async Task<bool> VerificarSeEmailJaExiste(string email)
         {
-            var result = await _repositoryUsuario.Listar();
+            var result = await _unitOfWork.RepositoryUsuario.Listar();
             return result.Where(p => p.Email.ToUpper() == email.ToUpper()).Any();
         }
 

@@ -24,6 +24,7 @@ namespace Projeto.Mundial.IOC
             services.AddScoped<IRepositoryUsuario, RepositoryUsuario>();
 
             // outros
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<DataContext>();
         }
     }
