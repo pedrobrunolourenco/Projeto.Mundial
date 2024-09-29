@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs';
 import { ResultAuth } from '../_models/ResultAuth';
 import { UserAuth } from '../_models/UserAuth';
+import { ResultUsuario } from '../_models/ResultUsuario';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,17 @@ export class UsuarioService {
   baseUrl: string = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
+
+  listarUsuarios(){
+    const headers = new HttpHeaders({
+         'Authorization': `Bearer ${this.ObterToken()}`
+    });
+    return this.http.get<ResultUsuario>(this.baseUrl + 'Usuario/ObterUsuarios', {headers}).pipe(
+      map( (response: ResultUsuario) => {
+        return response;
+      })
+    );
+  }
 
   getToken(usuario: string, senha: string){
 
@@ -31,6 +43,15 @@ export class UsuarioService {
     );
   }
 
-  // const dado = localStorage.getItem('meuDado');
+  ObterToken() {
+    const tokenString = localStorage.getItem('token-mundial');
+    if(tokenString)
+    {
+      const tokenJson = JSON.parse(tokenString);
+      return tokenJson.token
+    }
+    return ""
+	}
+
 
 }

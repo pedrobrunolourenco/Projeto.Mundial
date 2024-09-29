@@ -1,0 +1,24 @@
+<div class="container mt-4">
+  <h4 class="mb-3">Lista de Usuários</h4>
+
+  <div class="d-flex justify-content-end mb-3">
+    <button class="btn btn-primary" routerLink="/usuario/novo">Novo Usuário</button>
+  </div>
+
+  <table class="table table-bordered table-hover">
+    <thead class="table-light">
+      <tr>
+        <th>ID do Usuario</th>
+        <th>Nome do Usuario</th>
+        <th>Perfil do Usuario</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usuario of usuarios">
+        <td>{{ usuario.codigoUsuario }}</td>
+        <td>{{ usuario.nomeUsuario }}</td>
+        <td>{{ usuario.nomePerfil }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

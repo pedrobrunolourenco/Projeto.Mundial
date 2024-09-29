@@ -16,6 +16,7 @@ import { BaseUiComponent } from './_components/base-ui/base-ui.component';
 import { LoginComponent } from './Pages/login/login.component';
 import { PerfilListComponent } from './Pages/perfil-list/perfil-list.component';
 import { PerfilFormComponent } from './Pages/perfil-form/perfil-form.component';
+import { UsuarioListComponent } from './Pages/usuario-list/usuario-list.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { PerfilFormComponent } from './Pages/perfil-form/perfil-form.component';
     BaseUiComponent,
     LoginComponent,
     PerfilListComponent,
-    PerfilFormComponent
+    PerfilFormComponent,
+    UsuarioListComponent
   ],
   imports: [
     BrowserModule,
