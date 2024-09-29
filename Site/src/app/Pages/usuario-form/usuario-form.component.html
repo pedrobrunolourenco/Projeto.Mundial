@@ -1,0 +1,43 @@
+<div class="container mt-4">
+  <h4 class="mb-4">Gravar Usuário</h4>
+
+  <form (ngSubmit)="gravarUsuario()" #usuarioForm="ngForm" autocomplete="off">
+    <div class="mb-3">
+      <label for="id" class="col-sm-2 col-form-label">ID do Usuário</label>
+      <div class="col-sm-2">
+        <input type="number" id="id" class="form-control" [(ngModel)]="usuario.id" name="id" autocomplete="off" required>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="idPerfil" class="form-label">Perfil</label>
+      <div class="col-sm-6">
+        <select id="idPerfil" class="form-select" [(ngModel)]="usuario.idPerfil" name="idPerfil" required>
+          <option [ngValue]="null" disabled selected>Selecione um perfil</option>
+          <option *ngFor="let perfil of perfis" [ngValue]="perfil.idPerfil">{{ perfil.nome }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="nome" class="form-label">Nome</label>
+      <div class="col-sm-6">
+        <input type="text" id="nome" class="form-control" [(ngModel)]="usuario.nome" name="nome" autocomplete="off" required>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <div class="col-sm-6">
+        <input type="email" id="email" class="form-control" [(ngModel)]="usuario.email" name="email" autocomplete="off" required>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="senha" class="form-label">Senha</label>
+      <div class="col-sm-6">
+        <input type="password" id="senha" class="form-control" [(ngModel)]="usuario.senha" name="senha"  autocomplete="new-password" required>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!usuarioForm.form.valid">Gravar</button>  </form>
+</div>

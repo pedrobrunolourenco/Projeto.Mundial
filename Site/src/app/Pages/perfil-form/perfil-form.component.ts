@@ -24,10 +24,9 @@ export class PerfilFormComponent {
   };
 
   gravarPerfil() {
-     console.log(this.perfil);
      this.perfilService.gravarPerfil(this.perfil).subscribe((response: ResultPerfil) => {
       if(response.sucesso == true){
-        this.toastr.success("Usuário gravado com sucesso!" );
+        this.toastr.success("Perfil gravado com sucesso!" );
         this.router.navigate(['/perfil/list']);
       }
       if(response.sucesso == false){
@@ -36,7 +35,7 @@ export class PerfilFormComponent {
         });
       }
      }, (erro) => {
-        this.toastr.error("Erro ao autenticar usuário");
+        this.toastr.error("Erro ao gravar perfil");
      });
   }
 

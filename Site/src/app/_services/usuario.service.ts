@@ -5,6 +5,7 @@ import { map } from 'rxjs';
 import { ResultAuth } from '../_models/ResultAuth';
 import { UserAuth } from '../_models/UserAuth';
 import { ResultUsuario } from '../_models/ResultUsuario';
+import { UsuarioRequest } from '../_models/UsuarioRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,19 @@ export class UsuarioService {
   baseUrl: string = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
+
+  gravarUsuario(usuario: UsuarioRequest){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.ObterToken()}`
+    });
+
+    return this.http.post<ResultUsuario>(this.baseUrl + 'Usuario/IncluirUsuario', usuario, {headers}).pipe(
+      map( (response: ResultUsuario) => {
+        return response;
+      })
+    );
+  }
+
 
   listarUsuarios(){
     const headers = new HttpHeaders({

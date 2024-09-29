@@ -2,17 +2,17 @@
   <h4 class="mb-4">Gravar Perfil</h4>
 
   <form (ngSubmit)="gravarPerfil()" #perfilForm="ngForm" autocomplete="off">
-    <div class="mb-3 row">
+    <div class="mb-3">
       <label for="idPerfil" class="col-sm-2 col-form-label">ID do Perfil</label>
       <div class="col-sm-2">
-        <input type="number" id="idPerfil" class="form-control" [(ngModel)]="perfil.idPerfil" name="idPerfil" required>
+        <input type="number" id="idPerfil" class="form-control" [(ngModel)]="perfil.idPerfil"  autocomplete="off" name="idPerfil" required>
       </div>
     </div>
 
-    <div class="mb-3 row">
+    <div class="mb-3">
       <label for="nomePerfil" class="col-sm-2 col-form-label">Nome do Perfil</label>
       <div class="col-sm-6">
-        <input type="text" id="nomePerfil" class="form-control" [(ngModel)]="perfil.nome" name="nome" required>
+        <input type="text" id="nomePerfil" class="form-control" [(ngModel)]="perfil.nome" autocomplete="off" name="nome" required>
       </div>
     </div>
 
