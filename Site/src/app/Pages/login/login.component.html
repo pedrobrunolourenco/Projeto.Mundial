@@ -3,12 +3,12 @@
     <h4 class="card-title text-center mb-4">Login</h4>
     <form (ngSubmit)="onSubmit()">
       <div class="mb-3">
-        <label for="loginInput" class="form-label">Usuário</label>
-        <input type="text" id="loginInput" [(ngModel)]="login" name="login" autocomplete="off" class="form-control" placeholder="Digite o nome do usuário" required>
+        <label for="usuarioInput" class="form-label">Usuário</label>
+        <input type="text" id="usuarioInput" [(ngModel)]="usuario" name="usuario" autocomplete="off" class="form-control" placeholder="Digite o nome do usuário" required>
       </div>
       <div class="mb-3">
-        <label for="passwordInput" class="form-label">Senha</label>
-        <input type="password" id="passwordInput" [(ngModel)]="senha" name="senha" autocomplete="new-password" class="form-control" placeholder="Digite a senha" required>
+        <label for="senhaInput" class="form-label">Senha</label>
+        <input type="password" id="senhaInput" [(ngModel)]="senha" name="senha" autocomplete="new-password" class="form-control" placeholder="Digite a senha" required>
       </div>
       <button type="submit" class="btn btn-primary w-100">Entrar</button>
     </form>

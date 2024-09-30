@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
                private router: Router
    ) { }
 
-  login: string = '';
+  usuario: string = '';
   senha: string = '';
 
   ngOnInit(): void {
@@ -25,16 +25,16 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.Autenticar(this.login, this.senha);
+    this.Autenticar(this.usuario, this.senha);
   }
 
-  Autenticar(login: string, senha: string){
-    if(this.login.length == 0 || this.senha.length == 0){
+  Autenticar(usuario: string, senha: string){
+    if(usuario.length == 0 || senha.length == 0){
       this.toastr.error("O obrigatório informar Usuario e Senha");
     }
     else
     {
-      this.usuarioService.getToken(login,senha).subscribe((response: ResultAuth) => {
+      this.usuarioService.getToken(usuario,senha).subscribe((response: ResultAuth) => {
         if(response.sucesso == true){
           this.toastr.success("Usuário autenticado com sucesso!" );
           this.router.navigate(['home']);
